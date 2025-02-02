@@ -108,3 +108,16 @@ declare global {
     interface RootParamList extends RootStackParamList {}
   }
 }
+
+export type NoteDetailParams = {
+  passProps: {
+    id: string;
+    note: string;
+    date: string;
+    image: string | { uri: string };
+  };
+};
+
+export type NoteStackParamList = {
+  NoteDetail: NoteDetailParams;
+};

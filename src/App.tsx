@@ -19,7 +19,7 @@ export function App() {
         enabled: 'auto',
         prefixes: [
           // Change the scheme to match your app's scheme defined in app.json
-          'helloworld://',
+          'assignment5://',
         ],
       }}
       onReady={() => {
