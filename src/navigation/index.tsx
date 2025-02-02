@@ -5,7 +5,6 @@ import {
   StaticParamList,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Image, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Home } from './screens/Home';
 import { OpenAI } from './screens/OpenAI';

@@ -9,8 +9,6 @@ type Props = {
 
 export function NoteDetail({ route }: Props) {
   const { note, date, image } = route.params.passProps;
-  
-  console.log('Image URL:', image);
 
   return (
     <View style={styles.container}>
@@ -18,7 +16,6 @@ export function NoteDetail({ route }: Props) {
         source={typeof image === 'string' ? { uri: image } : image}
         style={styles.image}
         resizeMode="contain"
-        onError={(error) => console.log('Image loading error:', error.nativeEvent.error)}
       />
       <Text style={styles.noteText}>{note}</Text>
       <Text style={styles.dateText}>{date}</Text>
