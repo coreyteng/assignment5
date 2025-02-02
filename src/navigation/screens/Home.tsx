@@ -2,9 +2,19 @@ import React, { useState } from 'react';
 import { Button, Text } from '@react-navigation/elements';
 import { StyleSheet, View, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+type HomeStackParamList = {
+  OpenAI: {
+    userMessage: string;
+  };
+  DeepSeek: {
+    userMessage: string;
+  };
+};
 
 export function Home() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
   const [userInput, setUserInput] = useState('');
 
   return (

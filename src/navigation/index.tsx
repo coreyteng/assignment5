@@ -11,6 +11,8 @@ import { Home } from './screens/Home';
 import { OpenAI } from './screens/OpenAI';
 import { DeepSeek } from './screens/DeepSeek';
 import { Human } from './screens/Human';
+import { Note } from './screens/Note';
+import { NoteDetail } from './screens/NoteDetail';
 import { NotFound } from './screens/NotFound';
 
 const HomeTabs = createBottomTabNavigator({
@@ -30,6 +32,15 @@ const HomeTabs = createBottomTabNavigator({
         title: 'Human',
         tabBarIcon: ({ color, size }) => (
           <Ionicons name="person" size={size} color={color} />
+        ),
+      },
+    },
+    Note: {
+      screen: Note,
+      options: {
+        title: 'Note',
+        tabBarIcon: ({ color, size }) => (
+          <Ionicons name="document" size={size} color={color} />
         ),
       },
     },
@@ -58,6 +69,16 @@ const RootStack = createNativeStackNavigator({
     },
     DeepSeek: {
       screen: DeepSeek,
+      options: ({ navigation }) => ({
+        headerLeft: () => (
+          <HeaderButton onPress={navigation.goBack}>
+            <Text>返回</Text>
+          </HeaderButton>
+        ),
+      }),
+    },
+    NoteDetail: {
+      screen: NoteDetail,
       options: ({ navigation }) => ({
         headerLeft: () => (
           <HeaderButton onPress={navigation.goBack}>
