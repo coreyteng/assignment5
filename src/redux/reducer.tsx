@@ -4,7 +4,7 @@ const initialState = {
     newName: 'Avon'
 }
 
-export default function reducer(state = initialState, action) {
+export default function reducer(state = initialState, action: any) {
     switch (action.type) {
         case CHANGE_NAME:
             return {
