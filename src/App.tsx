@@ -2,7 +2,7 @@ import { Assets as NavigationAssets } from '@react-navigation/elements';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
-import { Navigation } from './navigation';
+import { NavigationWithProvider } from './navigation';
 
 Asset.loadAsync([
   ...NavigationAssets,
@@ -13,18 +13,5 @@ Asset.loadAsync([
 SplashScreen.preventAutoHideAsync();
 
 export function App() {
-  return (
-    <Navigation
-      linking={{
-        enabled: 'auto',
-        prefixes: [
-          // Change the scheme to match your app's scheme defined in app.json
-          'assignment5://',
-        ],
-      }}
-      onReady={() => {
-        SplashScreen.hideAsync();
-      }}
-    />
-  );
+  return <NavigationWithProvider />;
 }

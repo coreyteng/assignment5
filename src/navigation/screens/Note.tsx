@@ -2,17 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button, FlatList, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-
-type NoteStackParamList = {
-  NoteDetail: {
-    passProps: {
-      id: string;
-      note: string;
-      date: string;
-      image: string;
-    };
-  };
-};
+import { NoteStackParamList } from '../index';
 
 var MOCK_DATA = [
     {
@@ -99,7 +89,7 @@ export function Note() {
         setDataSource(noteData);
     }, []); // 僅在組件首次渲染時執行
     
-    const showNoticeDetail = (cases: any) => {
+    const showNoticeDetail = (cases: NoteStackParamList['NoteDetail']['passProps']) => {
         navigation.navigate('NoteDetail', { passProps: cases });
     }
 
