@@ -16,6 +16,9 @@ import { NotFound } from './screens/NotFound';
 import { Profile } from './screens/Profile';
 import { ProfileDetail } from './screens/ProfileDetail';
 import { ProfileData } from '../types/profile';
+import { Book } from './screens/Book';
+import { BookDetail } from './screens/BookDetail';
+import type { BookData } from './screens/Book';
 
 //for redux
 import { Provider } from 'react-redux';
@@ -51,6 +54,15 @@ const HomeTabs = createBottomTabNavigator({
         title: 'Note',
         tabBarIcon: ({ color, size }) => (
           <Ionicons name="document" size={size} color={color} />
+        ),
+      },
+    },
+    Book: {
+      screen: Book,
+      options: {
+        title: 'Book',
+        tabBarIcon: ({ color, size }) => (
+          <Ionicons name="book" size={size} color={color} />
         ),
       },
     },
@@ -134,6 +146,16 @@ const RootStack = createNativeStackNavigator({
         path: '*',
       },
     },
+    BookDetail: {
+      screen: BookDetail,
+      options: ({ navigation }) => ({
+        headerLeft: () => (
+          <HeaderButton onPress={navigation.goBack}>
+            <Text>返回</Text>
+          </HeaderButton>
+        ),
+      }),
+    },
   },
 });
 
@@ -169,6 +191,7 @@ declare global {
     interface RootParamList extends StaticParamList<typeof RootStack> {
       Profile: { profileData?: ProfileData } | undefined;
       ProfileDetail: { initialData?: ProfileData } | undefined;
+      BookDetail: { passProps: BookData };
     }
   }
 };
@@ -236,4 +259,10 @@ export function AppNavigator() {
 export type ProfileStackParamList = {
   Profile: { profileData?: ProfileData };
   ProfileDetail: { initialData?: ProfileData };
+};
+
+export type BookStackParamList = {
+  BookDetail: {
+    passProps: BookData;
+  };
 };

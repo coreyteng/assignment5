@@ -3,6 +3,7 @@ import { Button, Text } from '@react-navigation/elements';
 import { StyleSheet, View, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useSelector } from 'react-redux';
 
 type HomeStackParamList = {
   OpenAI: {
@@ -16,9 +17,12 @@ type HomeStackParamList = {
 export function Home() {
   const navigation = useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
   const [userInput, setUserInput] = useState('');
+  const newName = useSelector((state: any) => state.newName);
 
   return (
     <View style={styles.container}> 
+      <Text style={styles.largeText}>Hello {newName} !</Text>
+
       <TextInput
         style={styles.input}
         placeholder="我可以為你做什麼？"
@@ -28,7 +32,6 @@ export function Home() {
         numberOfLines={4}
         textAlignVertical="top"
       />
-      
       <Text style={styles.largeText}>選擇人工智慧</Text>
       
       <Button 
